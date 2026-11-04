@@ -1,0 +1,14 @@
+{
+  "name": "@el-masry/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "test": "tsx pricing/pricing.test.ts && tsx quiz/quiz.test.ts",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}

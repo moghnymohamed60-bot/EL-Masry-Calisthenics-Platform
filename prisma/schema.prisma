@@ -1,0 +1,165 @@
+// This is your Prisma schema file for EL Masry Calisthenics Coaching Platform.
+// Supports SQLite for zero-config local evaluation and PostgreSQL/MySQL in production via DATABASE_URL.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String         @id @default(cuid())
+  email               String         @unique
+  passwordHash        String
+  name                String
+  phone               String?
+  role                String         @default("CLIENT") // "ADMIN" | "CLIENT"
+  forcePasswordChange Boolean        @default(false)
+  age                 Int?
+  heightCm            Float?
+  weightKg            Float?
+  goal                String?
+  injuries            String?
+  level               String?        @default("BEGINNER") // "BEGINNER" | "INTERMEDIATE" | "ADVANCED"
+  quizScore           Int?
+  quizAnswersJson     String?
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+  subscriptions       Subscription[]
+  assignedPlans       WeeklyPlan[]
+}
+
+model SiteConfig {
+  id          String   @id @default("singleton")
+  contentJson String   // Stores bilingual Hero, About, Timeline, Achievements, Steps, FAQs, Testimonials, Socials, WhatsApp
+  updatedAt   DateTime @updatedAt
+}
+
+model PricingPlan {
+  id               String         @id @default(cuid())
+  slug             String         @unique
+  durationMonths   Int
+  labelAr          String
+  labelEn          String
+  priceEgp         Float
+  isBestValue      Boolean        @default(false)
+  savingPercent    Int            @default(0)
+  featuresArJson   String         // JSON array of strings
+  featuresEnJson   String         // JSON array of strings
+  overridesJson    String         @default("{}") // JSON map of currencyCode -> fixed manual price override
+  sortOrder        Int            @default(0)
+  active           Boolean        @default(true)
+  subscriptions    Subscription[]
+}
+
+model CurrencyConfig {
+  code           String   @id // e.g., EGP, USD, SAR, AED, KWD...
+  nameEn         String
+  nameAr         String
+  symbol         String
+  flag           String
+  decimals       Int      @default(2)
+  rateFromEgp    Float    // 1 EGP = X target currency (or rate relative to EGP)
+  isAutoRate     Boolean  @default(true)
+  roundingRule   Int      @default(1) // 1, 5, 10, 50
+  enabled        Boolean  @default(true)
+  isDefault      Boolean  @default(false)
+  sortOrder      Int      @default(0)
+  updatedAt      DateTime @updatedAt
+}
+
+model Exercise {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  titleAr        String
+  titleEn        String
+  descriptionAr  String
+  descriptionEn  String
+  level          String   // "BEGINNER" | "INTERMEDIATE" | "ADVANCED"
+  muscleGroup    String   // "BACK" | "CHEST" | "SHOULDERS" | "CORE" | "LEGS" | "FULL_BODY"
+  skill          String   // "PULL_UPS" | "MUSCLE_UP" | "PLANCHE" | "FRONT_LEVER" | "HANDSTAND" | "DIPS_PUSHUPS" | "FUNDAMENTALS"
+  videoUrl       String
+  thumbnailUrl   String
+  photosJson     String   @default("[]")
+  cuesArJson     String   @default("[]")
+  cuesEnJson     String   @default("[]")
+  featured       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}
+
+model QuizConfig {
+  id                    String   @id @default("singleton")
+  intermediateThreshold Int      @default(35)
+  advancedThreshold     Int      @default(70)
+  questionsJson         String   // JSON array of bilingual quiz questions with options & weights
+  updatedAt             DateTime @updatedAt
+}
+
+model Subscription {
+  id                String       @id @default(cuid())
+  userId            String?
+  user              User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  clientName        String
+  clientPhone       String
+  clientEmail       String
+  age               Int?
+  heightCm          Float?
+  weightKg          Float?
+  goal              String?
+  injuries          String?
+  assessedLevel     String       @default("BEGINNER") // "BEGINNER" | "INTERMEDIATE" | "ADVANCED"
+  quizScore         Int          @default(0)
+  quizAnswersJson   String       @default("{}")
+  planId            String
+  plan              PricingPlan  @relation(fields: [planId], references: [id])
+  planLabelEn       String
+  planLabelAr       String
+  durationMonths    Int
+  basePriceEgp      Float
+  currencyCode      String
+  exchangeRateUsed  Float
+  displayedAmount   Float
+  paymentMethod     String       @default("WHATSAPP") // "WHATSAPP" | "PAYMOB" | "FAWRY" | "INSTAPAY"
+  status            String       @default("PENDING")  // "PENDING" | "PAID" | "ACTIVE" | "EXPIRED"
+  startDate         DateTime?
+  endDate           DateTime?
+  notes             String?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+}
+
+model WeeklyPlan {
+  id          String   @id @default(cuid())
+  titleAr     String
+  titleEn     String
+  weekNumber  Int      @default(1)
+  targetLevel String?  // "BEGINNER" | "INTERMEDIATE" | "ADVANCED" (for level-group plans)
+  userId      String?  // Optional specific client assignment
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notesAr     String?
+  notesEn     String?
+  daysJson    String   // JSON array of training days: [{ dayNumber, titleAr, titleEn, exercises: [{ exerciseId, titleAr, titleEn, sets, reps, restSeconds, tempo, notesAr, notesEn, videoUrl }] }]
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Transformation {
+  id          String   @id @default(cuid())
+  clientNameAr String
+  clientNameEn String
+  durationAr   String
+  durationEn   String
+  quoteAr      String
+  quoteEn      String
+  beforePhoto  String
+  afterPhoto   String
+  videoUrl     String?
+  levelAchieved String  @default("INTERMEDIATE")
+  featured     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+

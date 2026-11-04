@@ -1,0 +1,164 @@
+// Prisma schema for EL Masry Calisthenics Backend
+// Database: MySQL with Prisma ORM, accessed exclusively through backend/src/storage
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String         @id @default(cuid())
+  email               String         @unique
+  passwordHash        String
+  name                String
+  phone               String?
+  role                String         @default("CLIENT")
+  forcePasswordChange Boolean        @default(false)
+  age                 Int?
+  heightCm            Float?
+  weightKg            Float?
+  goal                String?        @db.Text
+  injuries            String?        @db.Text
+  level               String         @default("BEGINNER")
+  quizScore           Int?
+  quizAnswersJson     String?        @db.LongText
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+  subscriptions       Subscription[]
+  assignedPlans       WeeklyPlan[]
+}
+
+model SiteConfig {
+  id          String   @id @default("singleton")
+  contentJson String   @db.LongText
+  updatedAt   DateTime @updatedAt
+}
+
+model PricingPlan {
+  id               String         @id @default(cuid())
+  slug             String         @unique
+  durationMonths   Int
+  labelAr          String
+  labelEn          String
+  priceEgp         Float
+  isBestValue      Boolean        @default(false)
+  savingPercent    Int            @default(0)
+  featuresArJson   String         @db.LongText
+  featuresEnJson   String         @db.LongText
+  overridesJson    String         @db.LongText
+  sortOrder        Int            @default(0)
+  active           Boolean        @default(true)
+  subscriptions    Subscription[]
+}
+
+model CurrencyConfig {
+  code           String   @id
+  nameEn         String
+  nameAr         String
+  symbol         String
+  flag           String
+  decimals       Int      @default(2)
+  rateFromEgp    Float
+  isAutoRate     Boolean  @default(true)
+  roundingRule   Int      @default(1)
+  enabled        Boolean  @default(true)
+  isDefault      Boolean  @default(false)
+  sortOrder      Int      @default(0)
+  updatedAt      DateTime @updatedAt
+}
+
+model Exercise {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  titleAr        String
+  titleEn        String
+  descriptionAr  String   @db.Text
+  descriptionEn  String   @db.Text
+  level          String
+  muscleGroup    String
+  skill          String
+  videoUrl       String
+  thumbnailUrl   String
+  photosJson     String   @db.LongText
+  cuesArJson     String   @db.LongText
+  cuesEnJson     String   @db.LongText
+  featured       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
+
+model QuizConfig {
+  id                    String   @id @default("singleton")
+  intermediateThreshold Int      @default(35)
+  advancedThreshold     Int      @default(70)
+  questionsJson         String   @db.LongText
+  updatedAt             DateTime @updatedAt
+}
+
+model Subscription {
+  id                String       @id @default(cuid())
+  userId            String?
+  user              User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  clientName        String
+  clientPhone       String
+  clientEmail       String
+  age               Int?
+  heightCm          Float?
+  weightKg          Float?
+  goal              String?      @db.Text
+  injuries          String?      @db.Text
+  assessedLevel     String       @default("BEGINNER")
+  quizScore         Int          @default(0)
+  quizAnswersJson   String       @db.LongText
+  planId            String
+  plan              PricingPlan  @relation(fields: [planId], references: [id])
+  planLabelEn       String
+  planLabelAr       String
+  durationMonths    Int
+  basePriceEgp      Float
+  currencyCode      String
+  exchangeRateUsed  Float
+  displayedAmount   Float
+  paymentMethod     String       @default("WHATSAPP")
+  status            String       @default("PENDING")
+  startDate         DateTime     @default(now())
+  endDate           DateTime
+  notes             String?      @db.Text
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+}
+
+model WeeklyPlan {
+  id          String   @id @default(cuid())
+  titleAr     String
+  titleEn     String
+  weekNumber  Int      @default(1)
+  targetLevel String?
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notesAr     String?  @db.Text
+  notesEn     String?  @db.Text
+  daysJson    String   @db.LongText
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Transformation {
+  id            String   @id @default(cuid())
+  clientNameAr  String
+  clientNameEn  String
+  durationAr    String
+  durationEn    String
+  quoteAr       String   @db.Text
+  quoteEn       String   @db.Text
+  beforePhoto   String
+  afterPhoto    String
+  videoUrl      String?
+  levelAchieved String   @default("INTERMEDIATE")
+  featured      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+}
