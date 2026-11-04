@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "about": "About",
+    "achievements": "Achievements",
+    "transformations": "Results",
+    "howItWorks": "How It Works",
+    "pricing": "Pricing",
+    "exercises": "Exercises",
+    "faq": "FAQ",
+    "clientArea": "Client Area",
+    "admin": "Admin",
+    "levelQuiz": "Level Quiz",
+    "brandSub": "CALISTHENICS"
+  },
+  "pricing": {
+    "badge": "CHOOSE YOUR COACHING PLAN",
+    "title": "ONLINE COACHING PLANS",
+    "subtitle": "Every plan includes direct weekly WhatsApp follow-ups with EL Masry, a personalized workout program, and full Exercise Library video access.",
+    "displayIn": "Display prices in:",
+    "selectPlan": "Select Plan & Take Quiz",
+    "approxNote": "Prices shown are approximate. Final billing is confirmed on WhatsApp."
+  },
+  "exercises": {
+    "badge": "INTERACTIVE EXERCISE LIBRARY",
+    "title": "CALISTHENICS EXERCISE LIBRARY",
+    "searchPlaceholder": "Search exercise or skill...",
+    "allLevels": "All Levels",
+    "allMuscles": "All Muscle Groups",
+    "allSkills": "All Skills",
+    "watchVideo": "Watch Video & Cues"
+  }
+}
+

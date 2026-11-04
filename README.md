@@ -1,107 +1,121 @@
-# EL Masry Calisthenics — Online Coaching Platform & Admin CMS
+# EL Masry Calisthenics — Monorepo Platform
 
-A production-ready, bilingual (Arabic RTL default & English LTR) full-stack web application and no-code Admin Dashboard built for Egyptian Calisthenics Champion **EL Masry**.
+Production-ready, bilingual (Arabic RTL default & English LTR) online calisthenics coaching website, level-assessment quiz, multi-currency pricing engine, athlete portal, and no-code Admin CMS built for Egyptian Calisthenics Champion **EL Masry**.
 
 ---
 
-## 1. Architecture & Folder Structure
+## 1. Technology Stack
+
+- **Frontend (`frontend/`)**: React, TypeScript, Vite, Tailwind CSS, Framer Motion, React Router DOM, React Helmet Async
+- **Backend (`backend/`)**: Node.js, Express, TypeScript, Jose (JWT), bcryptjs
+- **Database (`backend/prisma/`)**: MySQL with Prisma ORM, accessed strictly through `backend/src/storage/`
+- **Validation & Shared Logic (`shared/`)**: Zod schemas, pure currency conversion & rounding engine, pure quiz level-scoring engine, and TypeScript contracts
+- **Workspace**: npm workspaces at the repository root (`frontend`, `backend`, `shared`)
+
+---
+
+## 2. Monorepo Structure
 
 ```text
-EL-Masry-Calisthenics-/
-├── prisma/
-│   ├── schema.prisma           # Prisma ORM Schema (User, SiteConfig, PricingPlan, CurrencyConfig, Exercise, QuizConfig, Subscription, WeeklyPlan, Transformation)
-│   ├── seed.ts                 # Database seed script (22 currencies, 5 plans, 8 exercises, 10-question quiz, default admin & demo athletes)
-│   └── database.json           # Auto-seeded persistent JSON/SQLite datastore
-├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── auth/route.ts             # JWT + bcrypt authentication, rate-limiting & forced first-login password change
-│   │   │   ├── site/route.ts             # Public & Admin CMS API for all site sections, plans, exercises, quiz & currencies
-│   │   │   ├── subscriptions/route.ts    # Subscription creation, status management, +30d extension & deletion
-│   │   │   ├── weekly-plans/route.ts     # Structured Weekly Workout Plan builder & management API
-│   │   │   └── currencies/sync/route.ts  # Daily automatic exchange rate sync with cached fallback
-│   │   ├── admin/page.tsx      # Protected Admin Dashboard (7 tabs: Analytics, Subscriptions, Weekly Plans, Exercises, Currencies, CMS, Quiz)
-│   │   ├── client/page.tsx     # Protected Athlete Portal (Weekly workout schedule, exercise videos, subscription status, WhatsApp check-in)
-│   │   ├── layout.tsx          # Root Bilingual Layout with Cairo, Bebas Neue & Inter fonts + JSON-LD Schema.org markup
-│   │   ├── page.tsx            # Public Website (Hero, About & Timeline, Trophy Cabinet, Transformations, How It Works, Multi-Currency Pricing, Exercise Library, Testimonials, FAQ, Footer)
-│   │   └── sitemap.ts          # Dynamic XML Sitemap
-│   ├── components/
-│   │   ├── Navbar.tsx                  # Sticky responsive header with Language Switcher & Currency Switcher
-│   │   ├── CurrencySwitcher.tsx        # Searchable 22-currency dropdown with flags, symbols & códigos
-│   │   └── QuizSubscriptionModal.tsx   # 3-Step Sign-up + 1-Question-Per-Screen Level Assessment Quiz + WhatsApp/Gateway Checkout
-│   ├── context/
-│   │   └── AppContext.tsx      # Global state for RTL/LTR language, currency selection, and live CMS synchronization
-│   └── lib/
-│       ├── auth.ts             # Jose JWT verification, HTTP-only cookies & login rate limiter
-│       ├── currency.ts         # Multi-currency price conversion, rounding rules (1/5/10/50), manual overrides & Arabic-Indic numeral formatting
-│       ├── db.ts               # Transactional persistence engine with automatic seeding
-│       └── seed-data.ts        # Complete bilingual seed data
-├── .env.example                # Environment variables template
-├── tailwind.config.js          # Custom athletic dark theme (#0A0A0A, #1E6BFF, #2D7BFF)
+el-masry-calisthenics/
+├── frontend/                          # React + Vite + Tailwind CSS + Framer Motion application
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── layout/                # Navbar, Footer, CurrencySwitcher
+│   │   │   ├── home/                  # Hero, About, Achievements, Transformations, How-it-works, Testimonials, FAQ
+│   │   │   ├── pricing/               # PricingSection (multi-currency plan cards)
+│   │   │   ├── quiz/                  # QuizSubscriptionModal (1-question-per-screen quiz & checkout)
+│   │   │   ├── exercises/             # ExerciseLibrarySection (searchable/filterable grid & video modal)
+│   │   │   ├── client/                # WeeklyPlanViewer
+│   │   │   ├── admin/                 # OverviewStats
+│   │   │   └── ui/                    # Button
+│   │   ├── pages/                     # HomePage, PricingPage, ExercisesPage, ClientAreaPage, admin/AdminDashboardPage
+│   │   ├── services/                  # Browser API services (siteService, authService, subscriptionService, weeklyPlanService, currencyService)
+│   │   ├── context/                   # AppContext (AR/EN RTL/LTR, Currency, Site CMS state)
+│   │   ├── hooks/                     # useTranslation, useCurrency
+│   │   ├── locales/                   # ar.json and en.json translation files
+│   │   ├── App.tsx                    # Root application composition and routes
+│   │   └── main.tsx                   # Browser entry point
+│   ├── public/                        # robots.txt, sitemap.xml
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── tailwind.config.ts
+│   └── vite.config.ts
+│
+├── backend/                           # Node.js + Express + TypeScript API server
+│   ├── src/
+│   │   ├── data/                      # seedData.ts (default admin, exercises, quiz, 22 currencies)
+│   │   ├── middleware/                # JWT auth, role check, rate limiting, Zod validation, error handler
+│   │   ├── routes/                    # HTTP endpoints (/api/auth, /api/site, /api/subscriptions, /api/weekly-plans, /api/currencies/sync, etc.)
+│   │   ├── services/                  # Business logic (authService, subscriptionService, weeklyPlanService, currencyExchangeService, cmsContentService)
+│   │   ├── storage/                   # Data-access boundary (databaseRepository.ts + mediaStorageAdapter.ts)
+│   │   ├── app.ts                     # Express configuration and route registration
+│   │   └── server.ts                  # HTTP process entry point
+│   ├── prisma/                        # schema.prisma (MySQL) and seed.ts
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── shared/                            # Pure logic & contracts shared by frontend and backend
+│   ├── constants/                     # Base EGP plan prices, 22 supported currencies, quiz thresholds
+│   ├── pricing/                       # Pure currency conversion, rounding & overrides + unit tests
+│   ├── quiz/                          # Pure level-scoring logic + unit tests
+│   ├── schemas/                       # Zod runtime validation schemas
+│   └── types/                         # Shared TypeScript interfaces
+│
+├── frontend.md/                       # Frontend documentation
+│   ├── components.md
+│   └── routing-i18n-theming.md
+├── backend.md/                        # Backend documentation
+│   ├── api-and-auth.md
+│   └── storage-and-deployment.md
+├── random.md/                         # Shared, quiz scoring & currency documentation
+│   └── shared-pricing-and-quiz.md
+├── README.md
+├── .env.example
+├── .gitignore
 └── package.json
 ```
 
 ---
 
-## 2. Quick Setup & Local Development
+## 3. Documentation Links
 
-1. **Install dependencies:**
+- **Frontend Documentation**:
+  - [Components & Hierarchy](./frontend.md/components.md)
+  - [Routing, Bilingual i18n (RTL/LTR) & Theming](./frontend.md/routing-i18n-theming.md)
+- **Backend Documentation**:
+  - [API Reference, Middleware & Auth](./backend.md/api-and-auth.md)
+  - [Storage Layer, MySQL Prisma Schema & Deployment](./backend.md/storage-and-deployment.md)
+- **Shared Logic & Data Documentation**:
+  - [Currency Engine, Quiz Scoring & Unit Tests](./random.md/shared-pricing-and-quiz.md)
+
+---
+
+## 4. Setup & Workspace Commands
+
+1. **Install all workspace dependencies:**
    ```bash
    npm install
    ```
 
 2. **Configure environment variables:**
-   Copy `.env.example` to `.env`:
    ```bash
    cp .env.example .env
    ```
 
-3. **Seed the database (Optional — auto-seeds on first launch):**
+3. **Run database migrations & seed initial data:**
    ```bash
+   npm run db:migrate
    npm run db:seed
    ```
 
-4. **Start the development server:**
+4. **Start both Frontend (Vite on `:3000`) and Backend (Express on `:4000`) together:**
    ```bash
    npm run dev
    ```
-   Open `http://localhost:3000` in your browser.
 
----
-
-## 3. Default Login Credentials
-
-### Admin Dashboard (`/admin`)
-- **Email:** `admin@elmasry.com`
-- **Temporary Password:** `ElMasry@2026`
-- *Note:* On your very first login, the system enforces a mandatory password update for security.
-
-### Athlete / Client Portal (`/client`)
-- **Email:** `karim@example.com`
-- **Password:** `Client@2026`
-
----
-
-## 4. Admin User Guide (For Coach EL Masry)
-
-1. **Managing Subscriptions & Clients (`Subscriptions & Clients` Tab):**
-   - View every client who completed the Level Assessment Quiz and requested a plan.
-   - Search by name, phone, or goal, and filter by status (`PENDING`, `PAID`, `ACTIVE`, `EXPIRED`) or assessed level (`BEGINNER`, `INTERMEDIATE`, `ADVANCED`).
-   - Change any subscription's status with one click once payment is confirmed on WhatsApp/InstaPay, extend a client's subscription by `+30d`, or export the entire table to **CSV / Excel**.
-
-2. **Creating Weekly Training Plans (`Weekly Workout Plans` Tab):**
-   - Build structured weekly training schedules by week number and target level (`BEGINNER`, `INTERMEDIATE`, `ADVANCED`).
-   - Add training days, exercises, sets, reps, rest times, coaching notes, and explanation video links.
-   - Clients immediately see their updated weekly workout plan when they log into `/client`.
-
-3. **Managing Currencies & Pricing (`Currencies & Pricing` Tab):**
-   - Edit the base EGP price for any of the 5 plans (1, 2, 3, 6, 12 months).
-   - Set clean **Fixed Price Overrides** per plan for key currencies (e.g., `$45 USD` or `165 SAR` instead of raw converted decimals).
-   - Toggle any of the **22 supported currencies** (USD + 21 Arab currencies), switch between **Automatic API Sync** and **Manual Fixed Rate**, and customize rounding rules (`Nearest 1, 5, 10, or 50`).
-
-4. **Editing the Exercise Library (`Exercise Library` Tab):**
-   - Add new calisthenics skills and exercises with Arabic & English titles, descriptions, level tags, muscle groups, thumbnails, and YouTube/Vimeo explanation videos.
-
-5. **Editing Website Content (`Website CMS & Media` & `Quiz & Scoring` Tabs):**
-   - Edit the Hero headlines, About story, WhatsApp number, social media links, and Quiz questions/scoring thresholds in both Arabic and English with instant live updates.
-
+5. **Run unit tests (`shared/pricing` & `shared/quiz`) and type-check all workspaces:**
+   ```bash
+   npm test
+   npm run lint
+   ```

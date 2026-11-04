@@ -801,3 +801,4 @@ export const INITIAL_WEEKLY_PLANS: WeeklyPlan[] = [
     updatedAt: new Date().toISOString(),
   },
 ];
+

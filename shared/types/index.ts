@@ -242,3 +242,4 @@ export interface SiteContent {
     email: string;
   };
 }
+

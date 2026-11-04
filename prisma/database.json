@@ -3,18 +3,18 @@
     {
       "id": "admin-1",
       "email": "admin@elmasry.com",
-      "passwordHash": "$2a$10$kfKqRBbUehN8QSGb0xhHAuJA4oTyDPoR5mhYgnxUElwRmpC9fhKHC",
+      "passwordHash": "$2a$10$jqyNa04YxaTDuO32A4CTB.1/7zhqHU2KqnjOMr0rpt14PV705LBlO",
       "name": "Captain EL Masry (Admin)",
       "phone": "+201099999999",
       "role": "ADMIN",
       "forcePasswordChange": true,
       "level": "ADVANCED",
-      "createdAt": "2026-11-04T21:09:03.241Z"
+      "createdAt": "2026-11-04T21:30:44.108Z"
     },
     {
       "id": "client-1",
       "email": "karim@example.com",
-      "passwordHash": "$2a$10$pGg5d33wBbI3LOcpzzNpp.240gmAbW7GtUVqT.gtpsF2nob/EMOr6",
+      "passwordHash": "$2a$10$BIdPVmrC5tfU55.UhtL8M.GuLhZAZgmd4yTUQougTWEx0TZSRkD76",
       "name": "Karim Adel",
       "phone": "+201012345678",
       "role": "CLIENT",
@@ -26,12 +26,12 @@
       "injuries": "None",
       "level": "INTERMEDIATE",
       "quizScore": 48,
-      "createdAt": "2026-11-04T21:09:03.241Z"
+      "createdAt": "2026-11-04T21:30:44.108Z"
     },
     {
       "id": "client-2",
       "email": "fahad@example.com",
-      "passwordHash": "$2a$10$pGg5d33wBbI3LOcpzzNpp.240gmAbW7GtUVqT.gtpsF2nob/EMOr6",
+      "passwordHash": "$2a$10$BIdPVmrC5tfU55.UhtL8M.GuLhZAZgmd4yTUQougTWEx0TZSRkD76",
       "name": "Fahad Al-Otaibi",
       "phone": "+966501234567",
       "role": "CLIENT",
@@ -40,10 +40,10 @@
       "heightCm": 175,
       "weightKg": 71,
       "goal": "Straddle Planche & Full Front Lever",
-      "injuries": "Mild left wrist tightness",
+      "injuries": "None",
       "level": "ADVANCED",
       "quizScore": 78,
-      "createdAt": "2026-11-04T21:09:03.241Z"
+      "createdAt": "2026-11-04T21:30:44.108Z"
     }
   ],
   "siteConfig": {
@@ -755,8 +755,7 @@
       "videoUrl": "https://www.youtube.com/embed/eGo4IYlbE5g",
       "thumbnailUrl": "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=900&q=80",
       "photos": [
-        "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=900&q=80"
+        "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=900&q=80"
       ],
       "cuesAr": [
         "ابدأ من التعلق الكامل بفرط الذراعين",
@@ -1280,10 +1279,10 @@
       "displayedAmount": 4500,
       "paymentMethod": "INSTAPAY",
       "status": "ACTIVE",
-      "startDate": "2026-11-04T21:09:03.241Z",
-      "endDate": "2027-02-02T21:09:03.241Z",
+      "startDate": "2026-11-04T21:30:44.108Z",
+      "endDate": "2027-02-02T21:30:44.108Z",
       "notes": "Paid via InstaPay, weekly check-in every Friday",
-      "createdAt": "2026-11-04T21:09:03.241Z"
+      "createdAt": "2026-11-04T21:30:44.108Z"
     },
     {
       "id": "sub-1002",
@@ -1313,38 +1312,10 @@
       "displayedAmount": 750,
       "paymentMethod": "WHATSAPP",
       "status": "ACTIVE",
-      "startDate": "2026-11-04T21:09:03.241Z",
-      "endDate": "2027-11-04T21:09:03.241Z",
+      "startDate": "2026-11-04T21:30:44.108Z",
+      "endDate": "2027-11-04T21:30:44.108Z",
       "notes": "VIP 12-Month Athlete from Riyadh",
-      "createdAt": "2026-11-04T21:09:03.241Z"
-    },
-    {
-      "id": "sub-1003",
-      "clientName": "Youssef Al-Shamsi",
-      "clientPhone": "+971509876543",
-      "clientEmail": "youssef@example.com",
-      "age": 22,
-      "heightCm": 181,
-      "weightKg": 84,
-      "goal": "Fat loss & first 10 strict pull-ups",
-      "injuries": "None",
-      "assessedLevel": "BEGINNER",
-      "quizScore": 18,
-      "quizAnswers": {},
-      "planId": "plan-4",
-      "planLabelEn": "6 Months",
-      "planLabelAr": "٦ شهور",
-      "durationMonths": 6,
-      "basePriceEgp": 7000,
-      "currencyCode": "AED",
-      "exchangeRateUsed": 0.0749,
-      "displayedAmount": 535,
-      "paymentMethod": "WHATSAPP",
-      "status": "PENDING",
-      "startDate": "2026-11-04T21:09:03.241Z",
-      "endDate": "2027-05-03T21:09:03.241Z",
-      "notes": "Awaiting WhatsApp payment confirmation",
-      "createdAt": "2026-11-04T21:09:03.241Z"
+      "createdAt": "2026-11-04T21:30:44.108Z"
     }
   ],
   "weeklyPlans": [
@@ -1418,39 +1389,12 @@
               "notesAr": "النزول لزاوية ٩٠ درجة مع فرد كامل في الأعلى",
               "notesEn": "Lower to 90 degrees and lock out completely at top",
               "videoUrl": "https://www.youtube.com/embed/2z8JmcrW-As"
-            },
-            {
-              "titleAr": "ضغط بلانش مائل للأمام (Pseudo Planche Push-ups)",
-              "titleEn": "Pseudo Planche Lean Push-ups",
-              "sets": 3,
-              "reps": "8-12",
-              "restSeconds": 75,
-              "notesAr": "حافظ على ميلان الكتف للأمام طوال المجموعة",
-              "notesEn": "Maintain forward shoulder lean on every repetition",
-              "videoUrl": "https://www.youtube.com/embed/OmS5XnB-K2g"
-            }
-          ]
-        },
-        {
-          "dayNumber": 3,
-          "titleAr": "اليوم الثالث: القوة السفلى والمرونة (Lower Body & Mobility)",
-          "titleEn": "Day 3: Unilateral Legs & Joint Bulletproofing",
-          "exercises": [
-            {
-              "titleAr": "بيستول سكوات على صندوق (Box Pistol Squats)",
-              "titleEn": "Assisted / Box Pistol Squats",
-              "sets": 4,
-              "reps": "8 لكل رجل",
-              "restSeconds": 90,
-              "notesAr": "تحكم في الركبة ولا تسمح لها بالميل للداخل",
-              "notesEn": "Track knee directly over toes with controlled descent",
-              "videoUrl": "https://www.youtube.com/embed/vq5-vdgJc0I"
             }
           ]
         }
       ],
       "active": true,
-      "updatedAt": "2026-11-04T21:09:03.241Z"
+      "updatedAt": "2026-11-04T21:30:43.618Z"
     },
     {
       "id": "wp-2",
@@ -1487,37 +1431,10 @@
               "videoUrl": "https://www.youtube.com/embed/AGhb8bdE2hU"
             }
           ]
-        },
-        {
-          "dayNumber": 2,
-          "titleAr": "اليوم الثاني: التوازن الحر وتأسيس البلانش",
-          "titleEn": "Day 2: Freestanding Handstand & Planche Strength",
-          "exercises": [
-            {
-              "titleAr": "وقوف على اليدين حر (Freestanding Handstand Practice)",
-              "titleEn": "Freestanding Handstand Balance Sets",
-              "sets": 6,
-              "reps": "محاولات لمدة ١٥-٣٠ ثانية",
-              "restSeconds": 75,
-              "notesAr": "تحكم في التوازن بأصابع اليد",
-              "notesEn": "Use finger pressure to correct over-balance",
-              "videoUrl": "https://www.youtube.com/embed/tW5p6P9B8eE"
-            },
-            {
-              "titleAr": "ثبات تاك بلانش (Tuck Planche Hold)",
-              "titleEn": "Strict Tuck Planche Hold",
-              "sets": 5,
-              "reps": "12-15 ثانية",
-              "restSeconds": 90,
-              "notesAr": "كوع مفرود ١٠٠٪ مع دفع لوح الكتف للأعلى",
-              "notesEn": "100% locked elbows and maximal scapular protraction",
-              "videoUrl": "https://www.youtube.com/embed/OmS5XnB-K2g"
-            }
-          ]
         }
       ],
       "active": true,
-      "updatedAt": "2026-11-04T21:09:03.241Z"
+      "updatedAt": "2026-11-04T21:30:43.623Z"
     },
     {
       "id": "wp-3",
@@ -1530,8 +1447,8 @@
       "days": [
         {
           "dayNumber": 1,
-          "titleAr": "اليوم الأول: ثبات البلانش والضغط باليدين",
-          "titleEn": "Day 1: Straddle Planche & Freestanding HSPU",
+          "titleAr": "اليوم الأول: ثبات البلانش والفرونت ليفر",
+          "titleEn": "Day 1: Straddle Planche & Full Front Lever",
           "exercises": [
             {
               "titleAr": "ثبات سترادل بلانش (Straddle Planche Hold)",
@@ -1542,22 +1459,12 @@
               "notesAr": "حافظ على استقامة الخط الأفقي وفرط الكوع",
               "notesEn": "Maintain horizontal body line and full elbow lockout",
               "videoUrl": "https://www.youtube.com/embed/OmS5XnB-K2g"
-            },
-            {
-              "titleAr": "فرونت ليفر كامل + سحب (Full Front Lever & Pulls)",
-              "titleEn": "Full Front Lever Hold + Ice Cream Makers",
-              "sets": 5,
-              "reps": "8 ثوانٍ ثبات + 3 سحبات",
-              "restSeconds": 150,
-              "notesAr": "تحكم كامل بدون ثني الكوع",
-              "notesEn": "Zero elbow bend throughout the entire set",
-              "videoUrl": "https://www.youtube.com/embed/AGhb8bdE2hU"
             }
           ]
         }
       ],
       "active": true,
-      "updatedAt": "2026-11-04T21:09:03.241Z"
+      "updatedAt": "2026-11-04T21:30:43.624Z"
     }
   ],
   "transformations": [
@@ -1604,5 +1511,5 @@
       "featured": true
     }
   ],
-  "lastRateSync": "2026-11-04T21:09:03.241Z"
+  "lastRateSync": "2026-11-04T21:30:44.108Z"
 }

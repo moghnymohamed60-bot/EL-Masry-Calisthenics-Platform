@@ -43,3 +43,4 @@ export function runPricingTests() {
 if (require.main === module) {
   runPricingTests();
 }
+

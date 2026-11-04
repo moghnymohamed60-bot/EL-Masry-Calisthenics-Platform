@@ -24,3 +24,4 @@ export function classifyAthleteLevel(
   }
   return "BEGINNER";
 }
+

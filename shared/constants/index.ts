@@ -169,3 +169,4 @@ export const BASE_PRICING_PLANS: PricingPlan[] = [
     active: true
   }
 ];
+

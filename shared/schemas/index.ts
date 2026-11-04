@@ -99,3 +99,4 @@ export const WeeklyPlanSchema = z.object({
   ),
   active: z.boolean().default(true),
 });
+
