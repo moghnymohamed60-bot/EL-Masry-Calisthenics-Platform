@@ -28,8 +28,7 @@ export const INITIAL_SITE_CONFIG: SiteContent = {
     ctaPrimaryEn: "Start Your Journey",
     ctaWhatsappAr: "تواصل عبر واتساب",
     ctaWhatsappEn: "Chat on WhatsApp",
-    heroImageUrl:
-      "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1600&q=85",
+    heroImageUrl: "/images/coach/image6.jpeg",
     heroVideoUrl: "https://www.youtube.com/embed/IODxDxX7oi4",
   },
   about: {
@@ -41,8 +40,7 @@ export const INITIAL_SITE_CONFIG: SiteContent = {
       "بدأت رحلتي في عالم الكاليستنكس عام ٢٠١٩ بشغف كبير للتحكم في وزن الجسم وبناء قوة حقيقية تتجاوز الشكل الظاهري. بعد ٣ سنوات من الالتزام الصارم والتجربة العلمية، دخلت عالم المنافسات الاحترافية في ٢٠٢٢ وحققت المركز الأول في بطولات كبرى مثل iFlag و EGYFIT و Move DB. هدفي الآن هو اختصار سنوات من التجربة والخطأ عليك من خلال نظام تدريبي علمي ومجرب يناسب مستواك سواء كنت مبتدئاً تماماً أو لاعباً متقدماً.",
     storyEn:
       "I began my calisthenics journey in 2019 with a relentless drive to master bodyweight strength and static skills. After three years of disciplined preparation, I stepped onto the competitive stage in 2022—claiming 1st Place titles at iFlag Championship, EGYFIT, and Move DB, alongside 2nd Place finishes at the National Championship and Cali Coast. Today, I coach athletes worldwide to shortcut years of trial and error through structured, injury-free progressions.",
-    photoUrl:
-      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=85",
+    photoUrl: "/images/coach/image5.jpeg",
     stats: [
       { valueAr: "٢٠١٩", valueEn: "2019", labelAr: "بداية الرحلة", labelEn: "Started Journey" },
       { valueAr: "٢٠٢٢", valueEn: "2022", labelAr: "بداية البطولات", labelEn: "Started Competing" },
@@ -249,11 +247,8 @@ export const INITIAL_EXERCISES: Exercise[] = [
     muscleGroup: "BACK",
     skill: "PULL_UPS",
     videoUrl: "https://www.youtube.com/embed/eGo4IYlbE5g",
-    thumbnailUrl:
-      "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=900&q=80",
-    photos: [
-      "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=900&q=80",
-    ],
+    thumbnailUrl: "/images/coach/image7.jpeg",
+    photos: ["/images/coach/image7.jpeg"],
     cuesAr: [
       "ابدأ من التعلق الكامل بفرط الذراعين",
       "اسحب لوحي الكتف للأسفل قبل ثني الكوع",
@@ -279,11 +274,8 @@ export const INITIAL_EXERCISES: Exercise[] = [
     muscleGroup: "FULL_BODY",
     skill: "MUSCLE_UP",
     videoUrl: "https://www.youtube.com/embed/pS1A6ys82bA",
-    thumbnailUrl:
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=900&q=80",
-    photos: [
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=900&q=80",
-    ],
+    thumbnailUrl: "/images/coach/image8.jpeg",
+    photos: ["/images/coach/image8.jpeg"],
     cuesAr: [
       "استخدم قبضة شبه كاذبة لسهولة الدوران",
       "اسحب البار نحو أسفل الصدر/البطن بحركة القوس",
@@ -398,11 +390,8 @@ export const INITIAL_EXERCISES: Exercise[] = [
     muscleGroup: "CHEST",
     skill: "DIPS_PUSHUPS",
     videoUrl: "https://www.youtube.com/embed/2z8JmcrW-As",
-    thumbnailUrl:
-      "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80",
-    photos: [
-      "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80",
-    ],
+    thumbnailUrl: "/images/coach/image1.jpeg",
+    photos: ["/images/coach/image1.jpeg"],
     cuesAr: [
       "انزل ببطء حتى يصبح الكتف أسفل الكوع قليلاً",
       "مل بالجذع للأمام قليلاً لتفعيل الصدر والكتف",
@@ -483,10 +472,8 @@ export const INITIAL_TRANSFORMATIONS: Transformation[] = [
     durationEn: "3 Months (90 Days)",
     quoteAr: "من ٠ عقلة وزيادة ١٢ كجم في الوزن إلى ١٤ عدة عقلة نظيفة وأول ماصل أب!",
     quoteEn: "Went from 0 pull-ups and 12kg overweight to 14 strict pull-ups and my first bar muscle-up!",
-    beforePhoto:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80",
-    afterPhoto:
-      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&q=80",
+    beforePhoto: "/images/coach/image7.jpeg",
+    afterPhoto: "/images/coach/image1.jpeg",
     videoUrl: "https://www.youtube.com/embed/eGo4IYlbE5g",
     levelAchieved: "INTERMEDIATE",
     featured: true,
@@ -499,10 +486,8 @@ export const INITIAL_TRANSFORMATIONS: Transformation[] = [
     durationEn: "6 Months",
     quoteAr: "إتقان الفرونت ليفر الكامل والهاند ستاند الحر لأكثر من ٣٠ ثانية مع تغير كامل في شكل الجسم.",
     quoteEn: "Unlocked a 10-second Full Front Lever and 30s freestanding handstand while getting shredded.",
-    beforePhoto:
-      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=80",
-    afterPhoto:
-      "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=700&q=80",
+    beforePhoto: "/images/coach/image8.jpeg",
+    afterPhoto: "/images/coach/image6.jpeg",
     videoUrl: "https://www.youtube.com/embed/AGhb8bdE2hU",
     levelAchieved: "ADVANCED",
     featured: true,
@@ -516,10 +501,8 @@ export const INITIAL_TRANSFORMATIONS: Transformation[] = [
     quoteAr: "تخلصت من آلام الكتف القديمة وبنيت أقوى فورمة في حياتي بتمارين وزن الجسم فقط.",
     quoteEn:
       "Eliminated chronic shoulder pain and built my strongest physique ever using purely bodyweight training.",
-    beforePhoto:
-      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=700&q=80",
-    afterPhoto:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=80",
+    beforePhoto: "/images/coach/image2.jpeg",
+    afterPhoto: "/images/coach/image5.jpeg",
     videoUrl: "https://www.youtube.com/embed/OmS5XnB-K2g",
     levelAchieved: "INTERMEDIATE",
     featured: true,

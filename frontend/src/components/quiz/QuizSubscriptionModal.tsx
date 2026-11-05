@@ -74,7 +74,7 @@ export function QuizSubscriptionModal() {
         "تركيزنا في المرحلة الأولى سيكون على التأسيس السليم، بناء القوة الأساسية في العقلة والمتوازي والضغط، وتقوية المفاصل والأوتار للوصول لأول مهاراتك بأمان.",
       descEn:
         "Your custom program focuses on joint bulletproofing, strict pulling & pushing strength, core compression, and unlocking your first clean milestones.",
-      color: "from-emerald-500 to-teal-600",
+      color: "from-brand-navy to-brand-black border-2 border-brand-grey",
     },
     INTERMEDIATE: {
       ar: "متوسط (Intermediate)",
@@ -83,7 +83,7 @@ export function QuizSubscriptionModal() {
         "لديك أساس بدني قوي! جدولك سيركز على القوة الانفجارية لإتقان الماصل أب، الهاند ستاند الحر، والبدء في تدرجات الفرونت ليفر والبلانش.",
       descEn:
         "You have a solid foundation! Your weekly protocol targets explosive Muscle-Ups, freestanding Handstand balance, and Tuck/Advanced-Tuck static progressions.",
-      color: "from-brand-blue to-brand-accent",
+      color: "from-brand-blue to-brand-royal border-2 border-white",
     },
     ADVANCED: {
       ar: "متقدم / بطولات (Advanced)",
@@ -92,7 +92,7 @@ export function QuizSubscriptionModal() {
         "مستوى احترافي! خطتك مصممة بأسلوب أبطال البطولات لإتقان الثبات الكامل (Straddle/Full Planche & Front Lever) وزيادة قوة التحمل العالي.",
       descEn:
         "Elite level! Your periodized plan focuses on competition-grade Straddle/Full Planche, Full Front Lever holds, and high-tension dynamic combinations.",
-      color: "from-amber-500 to-orange-600",
+      color: "from-brand-black via-brand-navy to-brand-blue border-2 border-brand-blue",
     },
   }[assessedLevel];
 
@@ -187,13 +187,17 @@ export function QuizSubscriptionModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-2xl rounded-3xl border border-white/15 bg-[#0D1320] text-white shadow-glow-lg overflow-hidden my-auto">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-black/40">
-          <div className="flex items-center gap-2.5">
-            <Sparkles className="w-5 h-5 text-brand-accent" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-brand-black/85 backdrop-blur-md overflow-y-auto">
+      <div className="relative w-full max-w-2xl rounded-3xl border-2 border-brand-blue bg-brand-black text-white shadow-glow-lg overflow-hidden my-auto">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/15 bg-gradient-to-r from-brand-navy via-brand-royal to-brand-black">
+          <div className="flex items-center gap-3">
+            <img
+              src="/images/coach/image7.jpeg"
+              alt="EL Masry"
+              className="w-11 h-11 rounded-xl object-cover object-top border-2 border-white shrink-0"
+            />
             <div>
-              <h3 className="font-bold text-base sm:text-lg">
+              <h3 className="font-black text-base sm:text-lg text-white">
                 {step === "FORM" &&
                   (lang === "ar"
                     ? "الخطوة ١: بيانات المتدرب واختيار الباقة"
@@ -207,12 +211,12 @@ export function QuizSubscriptionModal() {
                     ? "الخطوة ٣: نتيجتك وتأكيد الاشتراك"
                     : "Step 3: Assessment Result & Confirmation")}
               </h3>
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-brand-grey font-semibold">
                 {lang === "ar"
                   ? `الباقة المختارة: ${activePlan.labelAr}`
                   : `Selected Plan: ${activePlan.labelEn}`}{" "}
                 —{" "}
-                <span className="text-brand-accent font-bold">
+                <span className="text-white bg-brand-blue px-2 py-0.5 rounded font-black">
                   {formattedDisplayedPrice}
                 </span>
               </p>
@@ -221,7 +225,7 @@ export function QuizSubscriptionModal() {
           <button
             type="button"
             onClick={resetAndClose}
-            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/70 hover:text-white"
+            className="p-2 rounded-xl bg-white text-brand-black hover:bg-brand-grey font-bold"
           >
             <X className="w-5 h-5" />
           </button>
@@ -661,7 +665,7 @@ export function QuizSubscriptionModal() {
                     type="button"
                     disabled={submitting}
                     onClick={() => handleConfirmSubscription(true)}
-                    className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 hover:brightness-110 text-white font-black text-sm sm:text-base shadow-lg flex items-center justify-center gap-2.5 transition-all"
+                    className="w-full py-4 rounded-2xl bg-brand-blue hover:bg-brand-accent text-white font-black text-sm sm:text-base shadow-glow flex items-center justify-center gap-2.5 transition-all border border-white/25"
                   >
                     <MessageCircle className="w-5 h-5" />
                     <span>
@@ -679,9 +683,9 @@ export function QuizSubscriptionModal() {
                     type="button"
                     disabled={submitting}
                     onClick={() => handleConfirmSubscription(false)}
-                    className="w-full py-3 rounded-xl border border-brand-blue/50 bg-brand-blue/15 hover:bg-brand-blue/25 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
+                    className="w-full py-3.5 rounded-xl bg-white hover:bg-brand-grey text-brand-black font-black text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
                   >
-                    <ShieldCheck className="w-4 h-4 text-brand-accent" />
+                    <ShieldCheck className="w-4 h-4 text-brand-blue" />
                     <span>
                       {lang === "ar"
                         ? "حفظ الطلب والدخول لمنطقة المتدرب مباشرة"

@@ -15,4 +15,3 @@ process.on("SIGINT", () => {
   frontend.kill("SIGINT");
   process.exit(0);
 });
-

@@ -41,7 +41,7 @@ export interface DatabaseState {
   lastRateSync?: string;
 }
 
-const STORAGE_FILE = path.join(process.cwd(), "prisma", "database.json");
+const STORAGE_FILE = path.resolve(__dirname, "../../../prisma/database.json");
 
 function buildDefaultState(): DatabaseState {
   const adminHash = bcrypt.hashSync("ElMasry@2026", 10);

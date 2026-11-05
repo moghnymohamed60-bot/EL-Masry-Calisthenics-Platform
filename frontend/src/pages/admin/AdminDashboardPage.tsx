@@ -90,9 +90,7 @@ export function AdminDashboardPage() {
   const [newExMuscle, setNewExMuscle] = useState("BACK");
   const [newExSkill, setNewExSkill] = useState("PULL_UPS");
   const [newExVideo, setNewExVideo] = useState("https://www.youtube.com/embed/eGo4IYlbE5g");
-  const [newExThumb, setNewExThumb] = useState(
-    "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=900&q=80"
-  );
+  const [newExThumb, setNewExThumb] = useState("/images/coach/image1.jpeg");
 
   const [wpTitleAr, setWpTitleAr] = useState("");
   const [wpTitleEn, setWpTitleEn] = useState("");
@@ -299,19 +297,19 @@ export function AdminDashboardPage() {
       : `$${Math.round(totalRevenueEgp * usdRate).toLocaleString()} USD`;
 
   return (
-    <div className="min-h-screen bg-[#070B14] text-white">
-      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#0A0E1A]/95 backdrop-blur-xl">
+    <div className="min-h-screen bg-brand-black text-white">
+      <header className="sticky top-0 z-30 border-b-4 border-brand-blue bg-brand-black/95 backdrop-blur-xl shadow-card-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold flex items-center gap-1.5"
+              className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-brand-grey text-brand-black text-xs font-black flex items-center gap-1.5 transition-all"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-4 h-4 text-brand-blue" />
               <span>{lang === "ar" ? "عرض الموقع" : "Live Site"}</span>
             </Link>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-brand-blue flex items-center justify-center border border-white/20">
                 <Shield className="w-4 h-4 text-white" />
               </div>
               <span className="font-black text-sm sm:text-base tracking-wide">
@@ -322,8 +320,8 @@ export function AdminDashboardPage() {
 
           <div className="flex items-center gap-2.5">
             {saveBanner && (
-              <div className="px-3.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4" />
+              <div className="px-3.5 py-1.5 rounded-xl bg-white text-brand-black border-2 border-brand-blue text-xs font-black flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-brand-blue" />
                 <span>{saveBanner}</span>
               </div>
             )}
@@ -331,7 +329,7 @@ export function AdminDashboardPage() {
             <button
               type="button"
               onClick={() => setLang(lang === "ar" ? "en" : "ar")}
-              className="px-3 py-1.5 rounded-xl border border-white/15 bg-white/5 text-xs font-bold flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-xl border border-white/20 bg-brand-navy hover:bg-brand-blue text-xs font-black flex items-center gap-1.5"
             >
               <Globe className="w-3.5 h-3.5 text-brand-accent" />
               <span>{lang === "ar" ? "EN" : "عربي"}</span>
@@ -341,9 +339,9 @@ export function AdminDashboardPage() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="px-3 py-1.5 rounded-xl border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-red-300 text-xs font-bold flex items-center gap-1.5"
+                className="px-3.5 py-1.5 rounded-xl bg-brand-grey text-brand-black hover:bg-white text-xs font-black flex items-center gap-1.5"
               >
-                <LogOut className="w-3.5 h-3.5" />
+                <LogOut className="w-3.5 h-3.5 text-brand-blue" />
                 <span>{lang === "ar" ? "خروج" : "Logout"}</span>
               </button>
             )}
@@ -470,7 +468,7 @@ export function AdminDashboardPage() {
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex flex-wrap gap-2 p-2 rounded-2xl bg-brand-card border border-white/10">
+            <div className="flex flex-wrap gap-2 p-2.5 rounded-2xl bg-brand-grey border-2 border-white shadow-card-dark">
               {[
                 { id: "OVERVIEW", labelAr: "نظرة عامة والإحصائيات", labelEn: "Overview & Analytics", icon: TrendingUp },
                 { id: "SUBSCRIPTIONS", labelAr: "الاشتراكات والمتدربين", labelEn: "Subscriptions & Clients", icon: Users },
@@ -487,10 +485,10 @@ export function AdminDashboardPage() {
                     key={tab.id}
                     type="button"
                     onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                    className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${
+                    className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center gap-2 transition-all ${
                       active
-                        ? "bg-gradient-to-r from-brand-blue to-brand-accent text-white shadow-glow"
-                        : "text-white/70 hover:bg-white/5 hover:text-white"
+                        ? "bg-brand-blue text-white shadow-glow"
+                        : "text-brand-black hover:bg-white"
                     }`}
                   >
                     <Icon className="w-4 h-4" />
